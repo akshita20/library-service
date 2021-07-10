@@ -1,4 +1,4 @@
-package com.practice.libraryservice.client;
+package com.practice.libraryservice.client.resttemplate;
 
 import com.practice.libraryservice.entity.Book;
 import com.practice.libraryservice.exception.BookNotFoundException;
@@ -19,23 +19,23 @@ public class BookServiceClient {
 
     private final String bookUrl = "http://book-service/books";
 
-    @GetMapping("/library/books")
-    public List<Book> getBooks() {
-        Book[] bookArray = restTemplate.getForObject(bookUrl,Book[].class);
-        return Arrays.asList(bookArray);
-    }
+//    @GetMapping("/library/books")
+//    public List<Book> getBooks() {
+//        Book[] bookArray = restTemplate.getForObject(bookUrl,Book[].class);
+//        return Arrays.asList(bookArray);
+//    }
 
-    @GetMapping(value = "library/books/{id}")
-    public ResponseEntity<Book> getBookById(
-            @PathVariable(value = "id") int bookId) throws BookNotFoundException {
-        ResponseEntity<Book> responseEntity ;
-        try {
-            responseEntity = restTemplate.getForEntity(bookUrl + "/" + bookId, Book.class);
-        }catch(HttpClientErrorException e){
-            throw new BookNotFoundException(bookId);
-        }
-        return responseEntity;
-    }
+//    @GetMapping(value = "library/books/{id}")
+//    public ResponseEntity<Book> getBookById(
+//            @PathVariable(value = "id") int bookId) throws BookNotFoundException {
+//        ResponseEntity<Book> responseEntity;
+//        try {
+//            responseEntity = restTemplate.getForEntity(bookUrl + "/" + bookId, Book.class);
+//        }catch(HttpClientErrorException e){
+//            throw new BookNotFoundException(bookId);
+//        }
+//        return responseEntity;
+//    }
 
     @PostMapping(value = "library/books")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {

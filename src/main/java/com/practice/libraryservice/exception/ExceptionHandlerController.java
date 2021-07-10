@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 @ResponseBody
 public class ExceptionHandlerController {
 
-    @ExceptionHandler(BookNotFoundException.class)
+    @ExceptionHandler({BookNotFoundException.class, UserNotFoundException.class})
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    public Error bookNotFoundException(BookNotFoundException ex, WebRequest request) {
+    public Error resourceNotFoundException(Exception ex, WebRequest request) {
         Error message = new Error(
                 HttpStatus.NOT_FOUND.value(),
                 LocalDateTime.now(),

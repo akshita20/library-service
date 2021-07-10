@@ -1,11 +1,13 @@
 package com.practice.libraryservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
     private int id;
@@ -29,6 +32,8 @@ public class User {
     @NotBlank
     @Email
     private String email;
+
+    private List<Book> issuedBooks;
 
     private LocalDateTime createdAt;
 

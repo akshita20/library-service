@@ -1,7 +1,7 @@
 package com.practice.libraryservice.contract;
 
 import com.practice.libraryservice.LibraryServiceApplication;
-import com.practice.libraryservice.client.BookServiceClient;
+import com.practice.libraryservice.client.feign.BookServiceClient;
 import com.practice.libraryservice.entity.Book;
 import org.junit.Assert;
 import org.junit.Test;
